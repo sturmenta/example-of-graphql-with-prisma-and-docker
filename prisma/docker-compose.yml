@@ -4,7 +4,7 @@ services:
     image: prismagraphql/prisma:1.34
     restart: always
     ports:
-    - '${PRISMA_PORT}:${PRISMA_PORT}'
+      - '${PRISMA_PORT}:${PRISMA_PORT}'
     environment:
       PRISMA_CONFIG: |
         port: ${PRISMA_PORT}
@@ -20,7 +20,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
     ports:
-      - "${MONGO_PORT}:${MONGO_PORT}"
+      - '${MONGO_PORT}:${MONGO_PORT}'
     volumes:
       - mongo:/var/lib/mongo
 volumes:
