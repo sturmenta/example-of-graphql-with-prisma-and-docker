@@ -1,0 +1,25 @@
+{
+  "name": "prisma-graphql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://sturmenta@github.com/sturmenta/prisma-graphql",
+  "author": "sturmenta <sturmenta@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start:docker": "docker-machine start default",
+    "deploy": "cd ./prisma; docker-machine env; eval $(docker-machine env); docker-compose up -d; prisma deploy",
+    "open:playground": "dotenv cross-var open http://%PRISMA_DOMAIN%:%PRISMA_PORT%",
+    "----------------------------------------------------------": "",
+    "start": "yarn start:docker; yarn deploy; yarn open:playground",
+    "status": "docker-machine ls",
+    "stop": "docker-machine stop default"
+  },
+  "devDependencies": {
+    "cross-var": "^1.1.0",
+    "dotenv-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "prisma-client-lib": "^1.34.10"
+  }
+}
