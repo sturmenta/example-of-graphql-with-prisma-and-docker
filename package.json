@@ -8,14 +8,16 @@
   "scripts": {
     "start:docker": "docker-machine start default",
     "deploy": "cd ./prisma; docker-machine env; eval $(docker-machine env); docker-compose up -d; prisma deploy",
-    "open:playground": "dotenv cross-var open http://%PRISMA_DOMAIN%:%PRISMA_PORT%",
+    "open:server": "dotenv cross-var open http://localhost:%SERVER_PORT%",
+    "server": "dotenv node src/index.js; yarn open:server",
     "----------------------------------------------------------": "",
-    "server": "dotenv node src/index.js",
-    "start": "yarn start:docker; yarn deploy; yarn open:playground",
+    "start": "concurrently \"yarn start:docker; yarn deploy\" \"yarn server\"",
     "status": "docker-machine ls",
-    "stop": "docker-machine stop default"
+    "stop": "docker-machine stop default",
+    "clean": "sudo docker-machine env; eval \"$(docker-machine env default)\"; docker rm -fv $(docker ps -aq); cd ./prisma && docker-compose down; sudo lsof -i -P -n | grep 5432"
   },
   "devDependencies": {
+    "concurrently": "^5.2.0",
     "cross-var": "^1.1.0",
     "dotenv-cli": "^3.1.0",
     "eslint": "^6.8.0",

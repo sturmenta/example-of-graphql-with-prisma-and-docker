@@ -1,27 +1,10 @@
 const { GraphQLServer } = require('graphql-yoga');
 const { Prisma } = require('./generated/prisma-client');
-
-const Query = require('./resolvers/Query');
-const Mutation = require('./resolvers/Mutation');
-const Subscription = require('./resolvers/Subscription');
-const User = require('./resolvers/User');
-const Link = require('./resolvers/Link');
-const Vote = require('./resolvers/Vote');
-
-const resolvers = {
-  Query,
-  Mutation,
-  Subscription,
-  User,
-  Link,
-  Vote,
-};
-
-const endpoint = `http://${process.env.PRISMA_DOMAIN}:${process.env.PRISMA_PORT}`;
+const resolvers = require('./resolvers');
 
 const db = new Prisma({
-  endpoint,
-  secret: process.env.PRISMA_SECRET,
+  endpoint: `http://${process.env.PRISMA_DOMAIN}:${process.env.PRISMA_PORT}`,
+  secret: process.env.PRISMA_MANAGEMENT_API_SECRET,
 });
 
 const server = new GraphQLServer({
@@ -30,4 +13,6 @@ const server = new GraphQLServer({
   context: async () => ({ prisma: db }),
 });
 
-server.start(() => console.log(`Server is running on ${endpoint}`));
+server.start({ port: process.env.SERVER_PORT }, () =>
+  console.log(`Server is running on http://localhost:${process.env.SERVER_PORT}`)
+);
