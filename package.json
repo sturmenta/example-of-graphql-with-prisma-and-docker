@@ -14,8 +14,7 @@
     "----------------------------------------------------------": "",
     "start": "concurrently \"yarn server\" \"yarn start:docker; yarn deploy; yarn open:server; yarn help:comment\"",
     "status": "docker-machine ls",
-    "stop": "docker-machine stop default",
-    "clean": "sudo docker-machine env; eval \"$(docker-machine env default)\"; docker rm -fv $(docker ps -aq); cd ./prisma && docker-compose down; sudo lsof -i -P -n | grep 5432"
+    "stop": "docker-machine stop default"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
