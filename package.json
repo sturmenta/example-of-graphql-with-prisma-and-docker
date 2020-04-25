@@ -8,10 +8,11 @@
   "scripts": {
     "start:docker": "docker-machine start default",
     "deploy": "cd ./prisma; docker-machine env; eval $(docker-machine env); docker-compose up -d; prisma deploy",
+    "help:comment": "echo \"\n\n test graphql with queries saved in ./queriesExamples.md \n\n\n\"",
     "open:server": "dotenv cross-var open http://localhost:%SERVER_PORT%",
-    "server": "dotenv node src/index.js; yarn open:server",
+    "server": "dotenv node src/index.js",
     "----------------------------------------------------------": "",
-    "start": "concurrently \"yarn start:docker; yarn deploy\" \"yarn server\"",
+    "start": "concurrently \"yarn server\" \"yarn start:docker; yarn deploy; yarn open:server; yarn help:comment\"",
     "status": "docker-machine ls",
     "stop": "docker-machine stop default",
     "clean": "sudo docker-machine env; eval \"$(docker-machine env default)\"; docker rm -fv $(docker ps -aq); cd ./prisma && docker-compose down; sudo lsof -i -P -n | grep 5432"
