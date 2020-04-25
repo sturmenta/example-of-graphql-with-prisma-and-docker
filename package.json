@@ -10,6 +10,7 @@
     "deploy": "cd ./prisma; docker-machine env; eval $(docker-machine env); docker-compose up -d; prisma deploy",
     "open:playground": "dotenv cross-var open http://%PRISMA_DOMAIN%:%PRISMA_PORT%",
     "----------------------------------------------------------": "",
+    "server": "dotenv node src/index.js",
     "start": "yarn start:docker; yarn deploy; yarn open:playground",
     "status": "docker-machine ls",
     "stop": "docker-machine stop default"
@@ -22,7 +23,10 @@
     "prettier": "^2.0.5"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
+    "graphql-yoga": "^1.18.3",
+    "jsonwebtoken": "^8.5.1",
     "prisma-client-lib": "^1.34.10"
   }
 }

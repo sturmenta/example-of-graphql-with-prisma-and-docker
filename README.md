@@ -1,7 +1,7 @@
 # prisma-graphql
 
-
 ## first start
+
 ```
 # be sure of all cleaned
 https://github.com/docker/compose/issues/4950#issuecomment-398879461
@@ -18,6 +18,7 @@ prisma deploy
 ```
 
 ## run
+
 ```
 docker-machine start default
 docker-machine env
@@ -37,3 +38,10 @@ prisma deploy
 secret: ${env:PRISMA_MANAGEMENT_API_SECRET}
 ```
 
+- auth in graphql.playground (get with `prisma token`)
+
+```
+{
+  "Authorization": "Bearer <token>"
+}
+```
