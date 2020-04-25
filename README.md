@@ -13,7 +13,7 @@ yarn start
 
 - example queries in ./queriesExamples.md
 
-- auth in graphql.playground (get with `prisma token`)
+- add this in playground to queries that requires token (previous signup)
 
 ```
 {
