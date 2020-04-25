@@ -23,6 +23,6 @@ yarn start
 
 ## sources
 
-[graphql use](https://www.howtographql.com/graphql-js/0-introduction/)
-[docker configuration](https://dev.to/alvarojsnish/graphql-mongo-v2-the-easy-way-6cb)
-[prisma configuration](https://www.nocountryforgeeks.com/contruye-un-server-graphql-con-prisma/)
+- [graphql use](https://www.howtographql.com/graphql-js/0-introduction/)
+- [docker configuration](https://dev.to/alvarojsnish/graphql-mongo-v2-the-easy-way-6cb)
+- [prisma configuration](https://www.nocountryforgeeks.com/contruye-un-server-graphql-con-prisma/)
